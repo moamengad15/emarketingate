@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بوابة التسويق الالكتروني • eMarketigate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #1558b0;
+      --secondary: #f39c12;
+      --dark: #1a1a2e;
+      --dark2: #16213e;
+      --text: #333;
+      --text-light: #666;
+      --white: #fff;
+      --bg-light: #f5f7fa;
+      --border: #e0e0e0;
+      --green: #27ae60;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      color: var(--text);
+      background: #fff;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; }
+    ul { list-style: none; }
+
+    /* ======= TOP BAR ======= */
+    .top-bar {
+      background: var(--dark);
+      color: #ccc;
+      font-size: 13px;
+      padding: 6px 0;
+      text-align: center;
+    }
+    .top-bar span { color: var(--secondary); font-weight: 600; }
+
+    /* ======= NAVBAR ======= */
+    .navbar {
+      background: #fff;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo img {
+      height: 55px;
+      width: auto;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-text .main-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo-text .sub-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-menu > li {
+      position: relative;
+    }
+
+    .nav-menu > li > a {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      border-radius: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-menu > li > a:hover,
+    .nav-menu > li > a.active {
+      color: var(--primary);
+      background: rgba(26,115,232,0.08);
+    }
+
+    .nav-menu > li > a svg,
+    .nav-menu > li > a .fa-chevron-down {
+      font-size: 11px;
+      transition: var(--transition);
+    }
+
+    .nav-menu > li:hover > a .fa-chevron-down {
+      transform: rotate(180deg);
+    }
+
+    /* Dropdown */
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: var(--transition);
+      z-index: 100;
+      border-top: 3px solid var(--primary);
+    }
+
+    .nav-menu > li:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px 18px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text);
+      border-bottom: 1px solid #f0f0f0;
+      transition: var(--transition);
+    }
+
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover {
+      background: var(--bg-light);
+      color: var(--primary);
+      padding-right: 24px;
+    }
+
+    .nav-cta {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 10px 20px !important;
+      border-radius: 25px !important;
+      font-weight: 700 !important;
+      transition: var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark) !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(26,115,232,0.3);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2.5px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ======= HERO ======= */
+    .hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 50%, #0f3460 100%);
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-shape {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: #fff;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hero-circle1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,115,232,0.15) 0%, transparent 70%);
+      top: -100px;
+      left: -100px;
+    }
+
+    .hero-circle2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(243,156,18,0.1) 0%, transparent 70%);
+      bottom: 50px;
+      right: -50px;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content { color: #fff; }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(243,156,18,0.2);
+      border: 1px solid rgba(243,156,18,0.4);
+      color: var(--secondary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span { color: var(--secondary); }
+
+    .hero-subtitle {
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 10px;
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 30px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 13px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cairo', sans-serif;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(26,115,232,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 13px 30px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 15px;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* ======= SECTION COMMONS ======= */
+    .section { padding: 80px 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    .section-header { text-align: center; margin-bottom: 55px; }
+    .section-header .badge {
+      display: inline-block;
+      background: rgba(26,115,232,0.1);
+      color: var(--primary);
+      border: 1px solid rgba(26,115,232,0.2);
+      padding: 5px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .section-header h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .section-header h2 span { color: var(--primary); }
+    .section-header p {
+      font-size: 16px;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      margin: 12px auto 0;
+    }
+
+    /* ======= ABOUT SECTION ======= */
+    .about { background: #fff; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-content h2 {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 18px;
+    }
+
+    .about-content h2 span { color: var(--primary); }
+
+    .about-content p {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      line-height: 1.9;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      width: 100%;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: var(--bg-light);
+      border-radius: 12px;
+      border-bottom: 3px solid var(--primary);
+    }
+
+    .stat-item .number {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .stat-item .label {
+      font-size: 13px;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* ======= SERVICES ======= */
+    .services { background: var(--bg-light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 35px 28px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      border-top: 4px solid transparent;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 80px;
+      background: rgba(26,115,232,0.04);
+      border-radius: 50% 0 0 0;
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      border-top-color: var(--primary);
+    }
+
+    .service-card:hover::before {
+      width: 120px;
+      height: 120px;
+    }
+
+    .service-icon {
+      width: 65px;
+      height: 65px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .icon-blue { background: rgba(26,115,232,0.12); color: var(--primary); }
+    .icon-orange { background: rgba(243,156,18,0.12); color: var(--secondary); }
+    .icon-green { background: rgba(39,174,96,0.12); color: var(--green); }
+    .icon-purple { background: rgba(155,89,182,0.12); color: #9b59b6; }
+    .icon-red { background: rgba(231,76,60,0.12); color: #e74c3c; }
+    .icon-teal { background: rgba(0,188,212,0.12); color: #00bcd4; }
+    .icon-pink { background: rgba(233,30,99,0.12); color: #e91e63; }
+    .icon-indigo { background: rgba(63,81,181,0.12); color: #3f51b5; }
+
+    .service-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .service-link {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .service-link:hover {
+      gap: 10px;
+      color: var(--primary-dark);
+    }
+
+    .services-more {
+      text-align: center;
+      margin-top: 45px;
+    }
+
+    .btn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 35px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .btn-more:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(26,115,232,0.35);
+    }
+
+    /* ======= FEATURES BAND ======= */
+    .features-band {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      padding: 60px 0;
+    }
+
+    .features-band-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature-band-item {
+      text-align: center;
+      color: #fff;
+      padding: 30px 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: var(--transition);
+    }
+
+    .feature-band-item:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-5px);
+    }
+
+    .feature-band-item .icon {
+      font-size: 38px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-band-item h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-band-item p {
+      font-size: 13.5px;
+      opacity: 0.85;
+      line-height: 1.7;
+    }
+
+    /* ======= PROMO SECTIONS ======= */
+    .promo-section { padding: 80px 0; }
+
+    .promo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .promo-grid.reverse { direction: ltr; }
+    .promo-grid.reverse > * { direction: rtl; }
+
+    .promo-content h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .promo-content h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .promo-content p {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .promo-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .promo-image img {
+      border-radius: 16px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+      width: 100%;
+    }
+
+    /* ======= ANALYSIS SECTION ======= */
+    .analysis {
+      background: linear-gradient(135deg, #0f3460 0%, var(--dark) 100%);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .analysis::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='20' cy='20' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .analysis-content { color: #fff; }
+
+    .analysis-content h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .analysis-content h2 span { color: var(--secondary); }
+
+    .analysis-content h3 {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .analysis-content p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .analysis-image img {
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      width: 100%;
+    }
+
+    /* ======= CONTACT ======= */
+    .contact { background: var(--bg-light); padding: 80px 0; }
+
+    .contact-wrapper {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, var(--dark) 0%, #0f3460 100%);
+      padding: 55px 40px;
+      color: #fff;
+    }
+
+    .contact-info h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .contact-info p {
+      font-size: 14.5px;
+      opacity: 0.8;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
+
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .contact-item .ci-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-item div strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .contact-item div span {
+      font-size: 13px;
+      opacity: 0.75;
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .contact-form { padding: 55px 45px; }
+
+    .contact-form h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .contact-form p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      transition: var(--transition);
+      outline: none;
+      direction: rtl;
+    }
+
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26,115,232,0.1);
+    }
+
+    .form-group textarea { height: 110px; resize: vertical; }
+
+    .form-submit {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(26,115,232,0.35);
+    }
+
+    /* ======= FOOTER ======= */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.75);
+      padding: 60px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .footer-brand .brand-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .footer-brand .brand-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .footer-brand .brand-sub {
+      font-size: 12px;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.9;
+      margin-bottom: 22px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-col h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      width: 35px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+
+    .footer-col ul li a {
+      font-size: 14px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .footer-col ul li a::before {
+      content: '←';
+      font-size: 12px;
+      color: var(--primary);
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+      padding-right: 4px;
+    }
+
+    .footer-contact-items { display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .footer-contact-item .icon {
+      color: var(--primary);
+      font-size: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-item div {
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .footer-contact-item div a {
+      color: rgba(255,255,255,0.75);
+      transition: var(--transition);
+    }
+
+    .footer-contact-item div a:hover { color: var(--secondary); }
+
+    .footer-bottom {
+      background: rgba(0,0,0,0.2);
+      padding: 18px 20px;
+      text-align: center;
+      font-size: 13.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: rgba(255,255,255,0.6);
+      transition: var(--transition);
+      font-size: 13px;
+    }
+
+    .footer-bottom-links a:hover { color: var(--secondary); }
+
+    /* ======= FLOATING WHATSAPP ======= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 55px;
+      height: 55px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 26px;
+      box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+      z-index: 999;
+      transition: var(--transition);
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 5px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 5px 30px rgba(37,211,102,0.7); }
+      100% { box-shadow: 0 5px 20px rgba(37,211,102,0.4); }
+    }
+
+    /* Back to top */
+    .back-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-top.visible { opacity: 1; visibility: visible; }
+    .back-top:hover { background: var(--primary-dark); transform: translateY(-3px); }
+
+    /* ======= MOBILE MENU ======= */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1999;
+    }
+
+    .mobile-overlay.open { display: block; }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 300px;
+      height: 100vh;
+      background: #fff;
+      z-index: 2000;
+      padding: 20px;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+    }
+
+    .mobile-menu.open { right: 0; }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-close {
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 12px 15px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      border-radius: 8px;
+      margin-bottom: 4px;
+      transition: var(--transition);
+    }
+
+    .mobile-nav a:hover {
+      background: var(--bg-light);
+      color: var(--primary);
+    }
+
+    .mobile-nav .sub-item {
+      padding-right: 30px;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      color: var(--text-light) !important;
+    }
+
+    .mobile-nav .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      padding: 10px 15px 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ======= RESPONSIVE ======= */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+      .hero-btns { justify-content: center; }
+      .hero-image { order: -1; }
+      .hero-title { font-size: 30px; }
+
+      .about-grid,
+      .promo-grid,
+      .analysis-grid,
+      .contact-wrapper { grid-template-columns: 1fr; }
+
+      .promo-grid.reverse { direction: rtl; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .features-band-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+      .contact-info { padding: 35px 25px; }
+      .contact-form { padding: 35px 25px; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .section { padding: 55px 0; }
+      .section-header h2 { font-size: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .about-stats { grid-template-columns: 1fr; }
+      .hero-title { font-size: 26px; }
+      .hero-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating WhatsApp -->
+<a href="https://api.whatsapp.com/send?phone=966590533993" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Back to top -->
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</div>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="overlay" onclick="closeMobile()"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div style="font-weight:800;color:var(--primary);font-size:16px;">القائمة</div>
+    <span class="mobile-close" onclick="closeMobile()"><i class="fas fa-times"></i></span>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#">الرئيسية</a>
+    <a href="#">من نحن</a>
+    <a href="#">استشارات تسويقية</a>
+    <div class="section-label">خدماتنا</div>
+    <a href="#">خدمات التسويق الالكتروني</a>
+    <div class="section-label">الإعلانات</div>
+    <a href="#" class="sub-item">اعلانات جوجل</a>
+    <a href="#" class="sub-item">اعلانات انستجرام</a>
+    <a href="#" class="sub-item">اعلانات فيسبوك</a>
+    <a href="#" class="sub-item">اعلانات سناب شات</a>
+    <a href="#" class="sub-item">اعلانات تويتر</a>
+    <a href="#" class="sub-item">اعلانات تيك توك</a>
+    <div class="section-label">المواقع</div>
+    <a href="#" class="sub-item">تصميم متجر الكتروني</a>
+    <a href="#" class="sub-item">تصميم موقع الكتروني</a>
+    <a href="#">تهيئة محركات البحث | SEO</a>
+    <a href="#">المدونة</a>
+    <a href="#contact" style="background:var(--primary);color:#fff;text-align:center;border-radius:25px;margin-top:10px;" onclick="closeMobile()">تواصل معنا</a>
+  </nav>
+</div>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <span>بوابة التسويق الالكتروني</span> — بوابتك لعالم التسويق الرقمي
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="#" class="logo-text">
+      <span class="main-name">بوابة التسويق الالكتروني</span>
+      <span class="sub-name">eMarketingate</span>
+    </a>
+
+    <!-- Menu -->
+    <ul class="nav-menu">
+      <li><a href="#" class="active">الرئيسية</a></li>
+      <li><a href="#">من نحن</a></li>
+      <li>
+        <a href="#">استشارات <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="#">استشارات تسويقية</a></li>
+          <li><a href="#">استشارة مجانية</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">خدماتنا <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="#">خدمات التسويق الالكتروني</a></li>
+          <li><a href="#">التصميم والجرافيكس</a></li>
+          <li><a href="#">ادارة السوشال ميديا</a></li>
+          <li><a href="#">استضافة المواقع</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">الإعلانات <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="#">اعلانات جوجل</a></li>
+          <li><a href="#">اعلانات انستجرام</a></li>
+          <li><a href="#">اعلانات فيسبوك</a></li>
+          <li><a href="#">اعلانات سناب شات</a></li>
+          <li><a href="#">اعلانات تويتر</a></li>
+          <li><a href="#">اعلانات تيك توك</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">المواقع <i class="fas fa-chevron-down"></i></a>
+        <ul class="dropdown">
+          <li><a href="#">تصميم متجر الكتروني</a></li>
+          <li><a href="#">تصميم موقع الكتروني</a></li>
+        </ul>
+      </li>
+      <li><a href="#">SEO</a></li>
+      <li><a href="#">المدونة</a></li>
+      <li><a href="#contact" class="nav-cta">تواصل معنا</a></li>
+    </ul>
+
+    <!-- Hamburger -->
+    <div class="hamburger" onclick="openMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section class="hero">
+  <div class="hero-circle1"></div>
+  <div class="hero-circle2"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">🚀 بوابتك لعالم التسويق الرقمي</div>
+      <h1 class="hero-title">بوابة التسويق <span>الالكتروني</span></h1>
+      <div class="hero-subtitle">eMarketingate</div>
+      <div class="hero-tagline">خدمات تسويق متكاملة</div>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary"><i class="fas fa-th-large"></i> خدماتنا</a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-comments"></i> استشارة مجانية</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- Inline SVG illustration for hero -->
+      <svg viewBox="0 0 500 380" xmlns="http://www.w3.org/2000/svg" style="max-width:480px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.3))">
+        <!-- Monitor/Dashboard illustration -->
+        <rect x="40" y="40" width="420" height="260" rx="16" fill="#1e2d4a" stroke="#2d4a7a" stroke-width="2"/>
+        <rect x="40" y="40" width="420" height="32" rx="16" fill="#2d4a7a"/>
+        <circle cx="66" cy="56" r="6" fill="#e74c3c"/>
+        <circle cx="86" cy="56" r="6" fill="#f39c12"/>
+        <circle cx="106" cy="56" r="6" fill="#27ae60"/>
+        <text x="230" y="60" text-anchor="middle" fill="#8a9bc4" font-size="13" font-family="Cairo">eMarketingate Dashboard</text>
+        <!-- Chart area -->
+        <rect x="60" y="88" width="240" height="140" rx="10" fill="#16213e"/>
+        <!-- Bar chart bars -->
+        <rect x="80" y="178" width="25" height="38" rx="4" fill="#1a73e8" opacity="0.8"/>
+        <rect x="115" y="155" width="25" height="61" rx="4" fill="#1a73e8"/>
+        <rect x="150" y="168" width="25" height="48" rx="4" fill="#1a73e8" opacity="0.7"/>
+        <rect x="185" y="140" width="25" height="76" rx="4" fill="#f39c12"/>
+        <rect x="220" y="150" width="25" height="66" rx="4" fill="#1a73e8" opacity="0.9"/>
+        <rect x="255" y="135" width="25" height="81" rx="4" fill="#27ae60"/>
+        <!-- Line chart -->
+        <polyline points="80,175 115,158 150,163 185,148 220,152 255,140 285,130" fill="none" stroke="#f39c12" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="80" cy="175" r="4" fill="#f39c12"/>
+        <circle cx="115" cy="158" r="4" fill="#f39c12"/>
+        <circle cx="150" cy="163" r="4" fill="#f39c12"/>
+        <circle cx="185" cy="148" r="4" fill="#f39c12"/>
+        <circle cx="220" cy="152" r="4" fill="#f39c12"/>
+        <circle cx="255" cy="140" r="4" fill="#f39c12"/>
+        <!-- Stats cards right -->
+        <rect x="316" y="88" width="128" height="58" rx="10" fill="#16213e"/>
+        <text x="380" y="112" text-anchor="middle" fill="#8a9bc4" font-size="10" font-family="Cairo">معدل التحويل</text>
+        <text x="380" y="134" text-anchor="middle" fill="#27ae60" font-size="22" font-family="Cairo" font-weight="700">+82%</text>
+        <rect x="316" y="158" width="128" height="58" rx="10" fill="#16213e"/>
+        <text x="380" y="182" text-anchor="middle" fill="#8a9bc4" font-size="10" font-family="Cairo">الزوار الجدد</text>
+        <text x="380" y="204" text-anchor="middle" fill="#1a73e8" font-size="22" font-family="Cairo" font-weight="700">12.4K</text>
+        <!-- Bottom row -->
+        <rect x="60" y="242" width="110" height="42" rx="10" fill="#16213e"/>
+        <text x="115" y="267" text-anchor="middle" fill="#f39c12" font-size="11" font-family="Cairo">🎯 المبيعات +64%</text>
+        <rect x="180" y="242" width="120" height="42" rx="10" fill="#16213e"/>
+        <text x="240" y="267" text-anchor="middle" fill="#e74c3c" font-size="11" font-family="Cairo">📊 ROI 340%</text>
+        <rect x="316" y="242" width="128" height="42" rx="10" fill="#16213e"/>
+        <text x="380" y="267" text-anchor="middle" fill="#9b59b6" font-size="11" font-family="Cairo">🚀 SEO ممتاز</text>
+        <!-- Bottom stand -->
+        <rect x="215" y="302" width="70" height="12" rx="4" fill="#2d4a7a"/>
+        <rect x="175" y="314" width="150" height="10" rx="4" fill="#2d4a7a"/>
+        <!-- Floating icons -->
+        <circle cx="460" cy="90" r="28" fill="#1a73e8" opacity="0.9"/>
+        <text x="460" y="97" text-anchor="middle" fill="#fff" font-size="22">📈</text>
+        <circle cx="20" cy="180" r="22" fill="#f39c12" opacity="0.85"/>
+        <text x="20" y="187" text-anchor="middle" fill="#fff" font-size="18">🎯</text>
+        <circle cx="470" cy="260" r="24" fill="#27ae60" opacity="0.85"/>
+        <text x="470" y="267" text-anchor="middle" fill="#fff" font-size="18">💡</text>
+      </svg>
+    </div>
+  </div>
+  <div class="hero-shape"></div>
+</section>
+
+<!-- ======= ABOUT ======= -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <div class="section-header" style="text-align:right;margin-bottom:28px;">
+          <div class="badge">من نحن</div>
+          <h2>بوابة التسويق الالكتروني | <span>eMarketingate</span></h2>
+          <div class="section-divider" style="margin:12px 0 0;"></div>
+        </div>
+        <p>تم تأسيس eMarketingate لتكون بوابتك لعالم التسويق الالكتروني. بوابة التسويق الالكتروني eMarketingate هو المكان الذي تستطيع من خلاله الترويج لنشاطك واشهار علامتك التجارية وتحقيق اهدافك التجارية بأقصر طريق.</p>
+        <p>حيث تتوفر لدينا الخبرة القوية لوضع خطة التسويق المناسبة لنشاطك وعمل كل ما يلزم لتحقيق اهدافك وتحويلها الى حقائق ونتائج ملموسة.</p>
+        <p>كما نقدم في بوابة التسويق الالكتروني eMarketingate خدمات انشاء المواقع بكافة انواعها. سواء كانت مواقع شخصية او مواقع اعمال او شركات او مدونات او متاجر الكترونية.</p>
+        <a href="#services" class="btn-primary" style="margin-top:10px;"><i class="fas fa-th-large"></i> تعرف على خدماتنا</a>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="number">500+</div>
+            <div class="label">عميل سعيد</div>
+          </div>
+          <div class="stat-item">
+            <div class="number">8+</div>
+            <div class="label">سنوات خبرة</div>
+          </div>
+          <div class="stat-item">
+            <div class="number">100%</div>
+            <div class="label">رضا العملاء</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image">
+        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;box-shadow:0 15px 50px rgba(0,0,0,0.12);">
+          <defs>
+            <linearGradient id="abg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1a1a2e"/>
+              <stop offset="100%" stop-color="#0f3460"/>
+            </linearGradient>
+          </defs>
+          <rect width="500" height="400" fill="url(#abg)"/>
+          <!-- Team/office illustration -->
+          <circle cx="250" cy="130" r="70" fill="#1a73e8" opacity="0.15"/>
+          <circle cx="250" cy="130" r="50" fill="#1a73e8" opacity="0.2"/>
+          <!-- Person 1 -->
+          <circle cx="180" cy="180" r="28" fill="#2d4a7a"/>
+          <circle cx="180" cy="158" r="14" fill="#f39c12"/>
+          <rect x="158" y="188" width="44" height="30" rx="8" fill="#1a73e8"/>
+          <text x="180" y="230" text-anchor="middle" fill="#fff" font-size="11" font-family="Cairo">مدير تسويق</text>
+          <!-- Person 2 -->
+          <circle cx="250" cy="180" r="28" fill="#2d4a7a"/>
+          <circle cx="250" cy="158" r="14" fill="#27ae60"/>
+          <rect x="228" y="188" width="44" height="30" rx="8" fill="#27ae60"/>
+          <text x="250" y="230" text-anchor="middle" fill="#fff" font-size="11" font-family="Cairo">مصمم جرافيك</text>
+          <!-- Person 3 -->
+          <circle cx="320" cy="180" r="28" fill="#2d4a7a"/>
+          <circle cx="320" cy="158" r="14" fill="#e74c3c"/>
+          <rect x="298" y="188" width="44" height="30" rx="8" fill="#9b59b6"/>
+          <text x="320" y="230" text-anchor="middle" fill="#fff" font-size="11" font-family="Cairo">مطور ويب</text>
+          <!-- Center brand -->
+          <circle cx="250" cy="130" r="38" fill="#1e2d4a" stroke="#1a73e8" stroke-width="2"/>
+          <text x="250" y="124" text-anchor="middle" fill="#1a73e8" font-size="10" font-family="Cairo" font-weight="700">eMarketin</text>
+          <text x="250" y="138" text-anchor="middle" fill="#f39c12" font-size="10" font-family="Cairo" font-weight="700">gate</text>
+          <!-- Services icons -->
+          <rect x="60" y="270" width="100" height="60" rx="12" fill="rgba(26,115,232,0.15)" stroke="rgba(26,115,232,0.3)" stroke-width="1"/>
+          <text x="110" y="295" text-anchor="middle" fill="#fff" font-size="20">📱</text>
+          <text x="110" y="315" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="Cairo">سوشال ميديا</text>
+          <rect x="200" y="270" width="100" height="60" rx="12" fill="rgba(39,174,96,0.15)" stroke="rgba(39,174,96,0.3)" stroke-width="1"/>
+          <text x="250" y="295" text-anchor="middle" fill="#fff" font-size="20">🎯</text>
+          <text x="250" y="315" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="Cairo">تسويق رقمي</text>
+          <rect x="340" y="270" width="100" height="60" rx="12" fill="rgba(243,156,18,0.15)" stroke="rgba(243,156,18,0.3)" stroke-width="1"/>
+          <text x="390" y="295" text-anchor="middle" fill="#fff" font-size="20">🌐</text>
+          <text x="390" y="315" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="Cairo">تصميم مواقع</text>
+          <!-- Bottom text -->
+          <text x="250" y="360" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="12" font-family="Cairo">فريق متكامل لنجاح أعمالك</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SERVICES INTRO ======= -->
+<section style="background:linear-gradient(135deg,var(--dark) 0%,#0f3460 100%);padding:60px 0;">
+  <div class="container">
+    <div class="section-header" style="color:#fff;">
+      <div class="badge" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.2);">خدماتنا</div>
+      <h2 style="color:#fff;">تريد اشهار علامتك التجارية؟</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:18px;font-weight:600;">أنت في المكان الصحيح</p>
+      <p style="color:rgba(255,255,255,0.6);margin-top:8px;">تعرف سريعا على خدماتنا التي نقدمها</p>
+      <div class="section-divider"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SERVICES ======= -->
+<section class="services section" id="services">
+  <div class="container">
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon icon-blue"><i class="fas fa-bullhorn"></i></div>
+        <h4>التسويق الالكتروني</h4>
+        <p>التسويق الالكتروني هو أكبر من مجرد كلمة تقال الآن. إنه قوة لا يستهان بها. فحين تضع الخطة المناسبة بالميزانية المناسبة لحجم نشاطك، حينها لن يوقفك شئ ولن يحول بينك وبين نجاح نشاطك اي شئ.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-orange"><i class="fas fa-server"></i></div>
+        <h4>استضافة المواقع</h4>
+        <p>بوابة التسويق الالكتروني تقدم لك باقة مختلفة من سيرفرات المواقع المدعومة بأحدث التقنيات. حصولك على سيرفر جيد كفيل بإعطاء دفعة قوية لموقعك الإلكتروني وتحسين ترتيبه في نتائج محركات البحث.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-green"><i class="fas fa-comments"></i></div>
+        <h4>الاستشارات التسويقية</h4>
+        <p>أيا كان مجال عملك اونلاين فاننا نقدم لك استشارات تسويقية وادارية تساعدك على النجاح وتحقيق اهدافك وتعزز من تواجدك واستمرارية اعمالك اونلاين.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-purple"><i class="fas fa-shopping-cart"></i></div>
+        <h4>تصميم وادارة المتاجر الالكترونية</h4>
+        <p>نحن نعمل بأنفسنا في التجارة الالكترونية، لذلك نعلم تحديدا ما الذي تريده عندما تريد تصميم متجر الكتروني، فقط اذكر لنا سمات موقعك العامة واترك تنفيذ أدق التفاصيل علينا.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-teal"><i class="fas fa-globe"></i></div>
+        <h4>تصميم وادارة المواقع الالكترونية</h4>
+        <p>نقوم بتصميم وإدارة المواقع الالكترونية للشركات والأفراد والمؤسسات باحترافية وفي وقت قياسي مقارنة بالشركات الاخرى وبأسعار منافسة ونقوم بتأمين موقعك ضد محاولات الاختراق.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-red"><i class="fas fa-search"></i></div>
+        <h4>ضبط وتهيئة محركات البحث | SEO</h4>
+        <p>نقوم بضبط وتهيئة محركات البحث لموقعك او لمتجرك الالكتروني لتعزيز تواجدك وسط المنافسين حيث نساعدك على تصدر النتائج الأولي لصفحات نتائج البحث على محرك البحث جوجل.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-orange"><i class="fas fa-ad"></i></div>
+        <h4>تخطيط وادارة الحملات الاعلانية</h4>
+        <p>نضع لك استراتيجيات مختلفة ضمن خطتك التسويقية والتي تتضمن تخطيط وادارة الحملات الإعلانية على المنصات الإعلانية المختلفة لتحقيق اكبر استفادة ممكن من ميزانيتك.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-pink"><i class="fas fa-share-alt"></i></div>
+        <h4>تخطيط وادارة محتوى السوشال ميديا</h4>
+        <p>أطلق العنان للوصول لعملائك بشكل مباشر عبر قنوات وحسابات السوشال ميديا المختلفة. نقوم بتخطيط وإدارة المحتوى المناسب لحسابات التواصل الاجتماعي الخاصة بك.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-indigo"><i class="fas fa-paint-brush"></i></div>
+        <h4>التصميم والجرافيكس</h4>
+        <p>نقدم لك باقة مختلفة من خدمات التصميم والجرافيكس التي يحتاجها نشاطك اونلاين. نقوم بتصميم بنرات المواقع والمتاجر الالكترونية ومحتوى الحملات الإعلانية.</p>
+        <a href="#" class="service-link">تفاصيل أكثر <i class="fas fa-arrow-left"></i></a>
+      </div>
+
+    </div>
+
+    <div class="services-more">
+      <a href="#" class="btn-more"><i class="fas fa-th-list"></i> تفاصيل أكثر عن خدماتنا</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FEATURES BAND ======= -->
+<section class="features-band">
+  <div class="container">
+    <div class="features-band-grid">
+      <div class="feature-band-item">
+        <span class="icon">🏢</span>
+        <h3>بوابة التسويق الالكتروني</h3>
+        <p>إدارة أعمالك اونلاين بكفاءة واحترافية عالية</p>
+        <a href="#services" style="color:var(--secondary);font-weight:700;font-size:14px;display:inline-block;margin-top:12px;">تعرف على خدماتنا ←</a>
+      </div>
+      <div class="feature-band-item">
+        <span class="icon">🌐</span>
+        <h3>موقع تعريفي لشركتك</h3>
+        <p>احصل على موقع إلكتروني تعريفي لشركتك او مؤسستك</p>
+        <a href="#" style="color:var(--secondary);font-weight:700;font-size:14px;display:inline-block;margin-top:12px;">تعرف على خدماتنا ←</a>
+      </div>
+      <div class="feature-band-item">
+        <span class="icon">🛒</span>
+        <h3>تريد أن تبدأ تجارتك الالكترونية</h3>
+        <p>ولا تعرف من أين تبدأ؟ نحن هنا لمساعدتك</p>
+        <a href="#" style="color:var(--secondary);font-weight:700;font-size:14px;display:inline-block;margin-top:12px;">احصل على متجرك ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROMO: RESPONSIVE WEBSITE ======= -->
+<section class="promo-section">
+  <div class="container">
+    <div class="promo-grid">
+      <div class="promo-content">
+        <div style="display:inline-block;background:rgba(26,115,232,0.1);color:var(--primary);border:1px solid rgba(26,115,232,0.2);padding:5px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:14px;">تصميم متجاوب</div>
+        <h2>احصل على موقع متجاوب الان</h2>
+        <h3>Responsive Web Design</h3>
+        <p>من أساسيات تصميم الويب الان ان يكون التصميم متوافقا مع جميع احجام شاشات الاجهزة الذكية. التصميم المتجاوب Responsive هو احد اهم عوامل ارشفة المواقع ايضا من قبل محركات البحث.</p>
+        <p>بالاضافة الى ان اغلب زوار المواقع حاليا يكونون من الاجهزة المحمولة، لذلك نحن في بوابة التسويق الالكتروني eMarketingate نحرص على ان تكون جميع تصميماتنا متوافقة مع جميع الاجهزة الذكية.</p>
+        <a href="#contact" class="btn-primary"><i class="fas fa-mobile-alt"></i> اطلبه الان</a>
+      </div>
+      <div class="promo-image">
+        <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;box-shadow:0 15px 50px rgba(0,0,0,0.1);max-width:100%;">
+          <rect width="480" height="360" fill="#f0f4f8"/>
+          <!-- Desktop -->
+          <rect x="30" y="30" width="280" height="180" rx="10" fill="#1a1a2e" stroke="#2d4a7a" stroke-width="2"/>
+          <rect x="30" y="30" width="280" height="20" rx="10" fill="#2d4a7a"/>
+          <rect x="40" y="60" width="260" height="140" rx="4" fill="#16213e"/>
+          <!-- Mini website in desktop -->
+          <rect x="40" y="60" width="260" height="30" rx="0" fill="#1a73e8"/>
+          <rect x="50" y="70" width="80" height="12" rx="3" fill="rgba(255,255,255,0.8)"/>
+          <rect x="200" y="70" width="40" height="10" rx="5" fill="rgba(255,255,255,0.3)"/>
+          <rect x="40" y="90" width="120" height="50" rx="0" fill="rgba(26,115,232,0.2)"/>
+          <rect x="50" y="98" width="80" height="8" rx="2" fill="rgba(255,255,255,0.7)"/>
+          <rect x="50" y="110" width="60" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="50" y="120" width="70" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+          <rect x="50" y="130" width="40" height="12" rx="6" fill="#f39c12"/>
+          <rect x="165" y="90" width="130" height="50" rx="4" fill="#1e2d4a"/>
+          <rect x="175" y="100" width="110" height="30" rx="4" fill="rgba(26,115,232,0.15)"/>
+          <rect x="40" y="145" width="255" height="50" rx="0" fill="#f8f9fa"/>
+          <rect x="60" y="158" width="60" height="8" rx="2" fill="#333" opacity="0.5"/>
+          <rect x="140" y="158" width="60" height="8" rx="2" fill="#333" opacity="0.5"/>
+          <rect x="220" y="158" width="60" height="8" rx="2" fill="#333" opacity="0.5"/>
+          <rect x="60" y="170" width="40" height="6" rx="2" fill="#999" opacity="0.5"/>
+          <rect x="140" y="170" width="40" height="6" rx="2" fill="#999" opacity="0.5"/>
+          <rect x="220" y="170" width="40" height="6" rx="2" fill="#999" opacity="0.5"/>
+          <!-- Stand -->
+          <rect x="155" y="210" width="30" height="12" rx="3" fill="#999"/>
+          <rect x="140" y="222" width="60" height="6" rx="3" fill="#bbb"/>
+          <!-- Tablet -->
+          <rect x="310" y="60" width="110" height="145" rx="10" fill="#1a1a2e" stroke="#2d4a7a" stroke-width="2"/>
+          <rect x="318" y="72" width="94" height="118" rx="4" fill="#16213e"/>
+          <rect x="318" y="72" width="94" height="25" rx="0" fill="#1a73e8"/>
+          <rect x="324" y="78" width="50" height="8" rx="2" fill="rgba(255,255,255,0.7)"/>
+          <rect x="318" y="97" width="94" height="40" rx="0" fill="rgba(26,115,232,0.1)"/>
+          <rect x="324" y="104" width="60" height="7" rx="2" fill="rgba(255,255,255,0.6)"/>
+          <rect x="324" y="115" width="45" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
+          <rect x="324" y="124" width="35" height="9" rx="4" fill="#f39c12"/>
+          <rect x="318" y="137" width="94" height="50" rx="0" fill="#f0f4f8"/>
+          <rect x="324" y="146" width="82" height="6" rx="2" fill="#ccc"/>
+          <rect x="324" y="156" width="70" height="6" rx="2" fill="#ddd"/>
+          <rect x="324" y="166" width="75" height="6" rx="2" fill="#ccc"/>
+          <circle cx="365" cy="198" r="4" fill="#999"/>
+          <!-- Mobile -->
+          <rect x="380" y="180" width="70" height="130" rx="12" fill="#1a1a2e" stroke="#2d4a7a" stroke-width="2"/>
+          <rect x="388" y="192" width="54" height="104" rx="6" fill="#16213e"/>
+          <rect x="388" y="192" width="54" height="18" rx="0" fill="#1a73e8"/>
+          <rect x="393" y="197" width="30" height="5" rx="2" fill="rgba(255,255,255,0.7)"/>
+          <rect x="388" y="210" width="54" height="30" rx="0" fill="rgba(26,115,232,0.1)"/>
+          <rect x="393" y="216" width="40" height="5" rx="2" fill="rgba(255,255,255,0.6)"/>
+          <rect x="393" y="224" width="25" height="7" rx="3" fill="#f39c12"/>
+          <rect x="388" y="240" width="54" height="52" rx="0" fill="#f0f4f8"/>
+          <rect x="393" y="248" width="44" height="5" rx="2" fill="#ccc"/>
+          <rect x="393" y="256" width="38" height="5" rx="2" fill="#ddd"/>
+          <rect x="393" y="264" width="40" height="5" rx="2" fill="#ccc"/>
+          <rect x="393" y="272" width="30" height="5" rx="2" fill="#ddd"/>
+          <circle cx="415" cy="298" r="4" fill="#999"/>
+          <!-- Responsive label -->
+          <text x="240" y="320" text-anchor="middle" fill="#1a73e8" font-size="15" font-family="Cairo" font-weight="700">تصميم متجاوب مع جميع الأجهزة</text>
+          <text x="240" y="342" text-anchor="middle" fill="#888" font-size="11" font-family="Cairo">Desktop • Tablet • Mobile</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ANALYSIS CTA ======= -->
+<section class="analysis">
+  <div class="container">
+    <div class="analysis-grid">
+      <div class="analysis-content">
+        <div style="display:inline-block;background:rgba(243,156,18,0.15);color:var(--secondary);border:1px solid rgba(243,156,18,0.3);padding:5px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:16px;">مجانا 100%</div>
+        <h2>تحليل موقعك <span>مجانا</span></h2>
+        <h3>تريد تحليل بيانات موقعك لمعرفة نقاط الضعف والقوة لديك؟</h3>
+        <p>حسنا كل ما عليك فعله هو ترك بيانات موقعك مع اهدافك لنا وخلال ايام معدودة سنقوم بفحص وتحليل بيانات موقعك وارسال نتيجة الفحص اليك.</p>
+        <p>كما يمكننا تنسيق مكالمة لمناقشة تفاصيل الموقع وكيفية تطويره بشكل يناسب اهداف نشاطك. كما سنقوم بتزويدك بما يمكنك عمله فيما يخص اعمالك اونلاين لتبدأ خطوات التسويق الالكتروني بشكلها الصحيح.</p>
+        <p><strong style="color:var(--secondary);">وكل هذا. التحليل وتوصيات التسويق الالكتروني نقدمها لك بشكل مجاني تماما.</strong></p>
+        <a href="#contact" class="btn-primary" style="background:var(--secondary);margin-top:5px;"><i class="fas fa-chart-line"></i> اطلب تحليل موقعك الان</a>
+      </div>
+      <div class="analysis-image">
+        <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.4);max-width:100%;">
+          <defs>
+            <linearGradient id="analysisBg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1e2d4a"/>
+              <stop offset="100%" stop-color="#0a1628"/>
+            </linearGradient>
+          </defs>
+          <rect width="460" height="340" fill="url(#analysisBg)"/>
+          <!-- Analysis dashboard -->
+          <text x="230" y="30" text-anchor="middle" fill="#8a9bc4" font-size="13" font-family="Cairo">تقرير تحليل الموقع</text>
+          <!-- Score circle -->
+          <circle cx="100" cy="110" r="60" fill="none" stroke="#1e2d4a" stroke-width="8"/>
+          <circle cx="100" cy="110" r="60" fill="none" stroke="#27ae60" stroke-width="8" stroke-dasharray="280" stroke-dashoffset="50" stroke-linecap="round" transform="rotate(-90 100 110)"/>
+          <text x="100" y="105" text-anchor="middle" fill="#27ae60" font-size="24" font-weight="700">82</text>
+          <text x="100" y="122" text-anchor="middle" fill="#8a9bc4" font-size="10" font-family="Cairo">نقاط التقييم</text>
+          <!-- Metrics -->
+          <rect x="175" y="50" width="265" height="40" rx="8" fill="#1a2640"/>
+          <text x="185" y="68" fill="#8a9bc4" font-size="11" font-family="Cairo">سرعة التحميل</text>
+          <rect x="280" y="60" width="130" height="10" rx="5" fill="#2d4a7a"/>
+          <rect x="280" y="60" width="90" height="10" rx="5" fill="#f39c12"/>
+          <text x="418" y="70" fill="#f39c12" font-size="10" font-weight="700">72%</text>
+
+          <rect x="175" y="100" width="265" height="40" rx="8" fill="#1a2640"/>
+          <text x="185" y="118" fill="#8a9bc4" font-size="11" font-family="Cairo">تهيئة SEO</text>
+          <rect x="280" y="110" width="130" height="10" rx="5" fill="#2d4a7a"/>
+          <rect x="280" y="110" width="115" height="10" rx="5" fill="#27ae60"/>
+          <text x="418" y="120" fill="#27ae60" font-size="10" font-weight="700">88%</text>
+
+          <rect x="175" y="150" width="265" height="40" rx="8" fill="#1a2640"/>
+          <text x="185" y="168" fill="#8a9bc4" font-size="11" font-family="Cairo">تجربة المستخدم</text>
+          <rect x="280" y="160" width="130" height="10" rx="5" fill="#2d4a7a"/>
+          <rect x="280" y="160" width="75" height="10" rx="5" fill="#e74c3c"/>
+          <text x="418" y="170" fill="#e74c3c" font-size="10" font-weight="700">58%</text>
+
+          <rect x="175" y="200" width="265" height="40" rx="8" fill="#1a2640"/>
+          <text x="185" y="218" fill="#8a9bc4" font-size="11" font-family="Cairo">الأمان والحماية</text>
+          <rect x="280" y="210" width="130" height="10" rx="5" fill="#2d4a7a"/>
+          <rect x="280" y="210" width="120" height="10" rx="5" fill="#1a73e8"/>
+          <text x="418" y="220" fill="#1a73e8" font-size="10" font-weight="700">92%</text>
+
+          <!-- Divider -->
+          <rect x="30" y="250" width="400" height="1" fill="rgba(255,255,255,0.08)"/>
+
+          <!-- Bottom summary -->
+          <rect x="30" y="265" width="120" height="55" rx="10" fill="rgba(39,174,96,0.12)" stroke="rgba(39,174,96,0.3)" stroke-width="1"/>
+          <text x="90" y="287" text-anchor="middle" fill="#27ae60" font-size="18" font-weight="700">12</text>
+          <text x="90" y="302" text-anchor="middle" fill="#8a9bc4" font-size="9" font-family="Cairo">نقطة قوة</text>
+
+          <rect x="170" y="265" width="120" height="55" rx="10" fill="rgba(231,76,60,0.12)" stroke="rgba(231,76,60,0.3)" stroke-width="1"/>
+          <text x="230" y="287" text-anchor="middle" fill="#e74c3c" font-size="18" font-weight="700">5</text>
+          <text x="230" y="302" text-anchor="middle" fill="#8a9bc4" font-size="9" font-family="Cairo">نقطة تحتاج تحسين</text>
+
+          <rect x="310" y="265" width="120" height="55" rx="10" fill="rgba(26,115,232,0.12)" stroke="rgba(26,115,232,0.3)" stroke-width="1"/>
+          <text x="370" y="287" text-anchor="middle" fill="#1a73e8" font-size="18" font-weight="700">3</text>
+          <text x="370" y="302" text-anchor="middle" fill="#8a9bc4" font-size="9" font-family="Cairo">توصيات فورية</text>
+
+          <text x="230" y="335" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="9" font-family="Cairo">تقرير مجاني • بوابة التسويق الالكتروني</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACT ======= -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">تواصل معنا</div>
+      <h2>تواصل <span>معنا</span></h2>
+      <p>املأ بياناتك وحدد الخدمة المطلوبة وسنقوم بالرد عليك في أقرب وقت</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="contact-wrapper">
+      <!-- Info -->
+      <div class="contact-info">
+        <h2>معلومات التواصل</h2>
+        <p>نحن هنا لمساعدتك في تحقيق أهدافك التسويقية. تواصل معنا الآن للحصول على استشارة مجانية.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>البريد الالكتروني</strong>
+              <span>info@emarketingate.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <strong>رقم الاتصال</strong>
+              <span>0590533993</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <strong>واتساب</strong>
+              <span>966590533993+</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-snapchat"></i></a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form">
+        <h2>أرسل لنا رسالة</h2>
+        <p>سنقوم بالرد عليك في أقرب وقت ممكن</p>
+        <div class="form-group">
+          <label>الخدمة المطلوبة</label>
+          <select>
+            <option value="">اختر الخدمة المطلوبة</option>
+            <option>تصميم متجر الكتروني</option>
+            <option>تصميم موقع الكتروني</option>
+            <option>تصميم موقع تعريفي صفحة واحدة</option>
+            <option>تصميم موقع تعريفي متعدد الصفحات</option>
+            <option>استشارة تسويقية</option>
+            <option>ادارة حملات اعلانية</option>
+            <option>خدمات التصميم والفيديو</option>
+            <option>ادارة حسابات التواصل الاجتماعي</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>الاسم</label>
+          <input type="text" placeholder="أدخل اسمك الكريم" />
+        </div>
+        <div class="form-group">
+          <label>البريد الالكتروني</label>
+          <input type="email" placeholder="أدخل بريدك الالكتروني" />
+        </div>
+        <div class="form-group">
+          <label>رقم الجوال</label>
+          <input type="tel" placeholder="أدخل رقم جوالك" />
+        </div>
+        <div class="form-group">
+          <label>رسالتك</label>
+          <textarea placeholder="أكتب رسالتك هنا..."></textarea>
+        </div>
+        <button class="form-submit"><i class="fas fa-paper-plane"></i> ارسال</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="logo-wrap">
+          <div class="brand-icon"><i class="fas fa-bullseye"></i></div>
+          <div>
+            <div class="brand-name">بوابة التسويق الالكتروني</div>
+            <div class="brand-sub">eMarketingate</div>
+          </div>
+        </div>
+        <p>بوابتك لعالم التسويق الرقمي. نقدم خدمات تسويق متكاملة تساعدك على النجاح وتحقيق أهدافك التجارية بأقصر طريق.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-snapchat"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#">الرئيسية</a></li>
+          <li><a href="#">من نحن</a></li>
+          <li><a href="#">خدماتنا</a></li>
+          <li><a href="#">استشارات تسويقية</a></li>
+          <li><a href="#">المدونة</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h4>خدماتنا</h4>
+        <ul>
+          <li><a href="#">التسويق الالكتروني</a></li>
+          <li><a href="#">تصميم المواقع</a></li>
+          <li><a href="#">تصميم المتاجر</a></li>
+          <li><a href="#">تهيئة SEO</a></li>
+          <li><a href="#">ادارة الاعلانات</a></li>
+          <li><a href="#">السوشال ميديا</a></li>
+          <li><a href="#">التصميم والجرافيكس</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <div class="footer-contact-items">
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope icon"></i>
+            <div><a href="mailto:info@emarketingate.com">info@emarketingate.com</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone icon"></i>
+            <div><a href="tel:0590533993">0590533993</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fab fa-whatsapp icon"></i>
+            <div><a href="https://api.whatsapp.com/send?phone=966590533993" target="_blank">واتساب</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div>جميع الحقوق محفوظة © 2026 بوابة التسويق الالكتروني • eMarketigate</div>
+    <div class="footer-bottom-links">
+      <a href="#">الرئيسية</a>
+      <a href="mailto:info@emarketingate.com">ايميل</a>
+      <a href="tel:0590533993">اتصال</a>
+      <a href="https://api.whatsapp.com/send?phone=966590533993" target="_blank">واتساب</a>
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">أعلى الصفحة</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  function openMobile() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Back to top
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backTop');
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+    } else {
+      nav.style.boxShadow = '0 2px 15px rgba(0,0,0,0.1)';
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .feature-band-item, .stat-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
